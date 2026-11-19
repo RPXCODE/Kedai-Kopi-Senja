@@ -1,0 +1,78 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "name": "Barista Senja (Admin)",
+      "email": "admin@kopi-senja.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "pelanggan",
+      "password": "kopi123",
+      "name": "Budi Santoso",
+      "email": "budi@gmail.com",
+      "role": "customer"
+    },
+    {
+      "id": 3,
+      "username": "bejo",
+      "password": "himam202028",
+      "name": "bejo",
+      "email": "bejo@gmail.com",
+      "role": "customer"
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "Kopi Hitam",
+      "category": "Minuman Kopi",
+      "description": "Kopi hitam asli tanpa gula yang pekat dan aromatik.",
+      "price": 15000,
+      "badge": "Klasik"
+    },
+    {
+      "id": 2,
+      "name": "Kopi Susu Aren",
+      "category": "Minuman Kopi",
+      "description": "Campuran espresso, susu segar, dan gula aren asli yang manis gurih.",
+      "price": 20000,
+      "badge": "Terlaris (Promo 20%)"
+    },
+    {
+      "id": 3,
+      "name": "Cappuccino",
+      "category": "Minuman Kopi",
+      "description": "Espresso dengan campuran susu creamy dan busa tebal bertabur cokelat bubuk.",
+      "price": 25000,
+      "badge": "Favorit"
+    },
+    {
+      "id": 4,
+      "name": "Es Teh Manis",
+      "category": "Non-Kopi",
+      "description": "Teh melati wangi segar disajikan dingin dengan es batu dan gula.",
+      "price": 10000,
+      "badge": "Segar"
+    },
+    {
+      "id": 5,
+      "name": "Matcha Latte",
+      "category": "Non-Kopi",
+      "description": "Matcha Jepang pilihan dengan steamed milk yang lembut dan manis pas.",
+      "price": 24000,
+      "badge": "Spesial"
+    },
+    {
+      "id": 6,
+      "name": "Roti Bakar Coklat Keju",
+      "category": "Camilan",
+      "description": "Roti panggang renyah berpadu selai coklat lumer dan parutan keju melimpah.",
+      "price": 18000,
+      "badge": "Snack"
+    }
+  ]
+}

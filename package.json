@@ -1,0 +1,20 @@
+{
+  "name": "tugas-pemrograman-web-kopi-senja",
+  "version": "1.0.0",
+  "description": "Aplikasi Web Kedai Kopi Senja dengan Autentikasi Login, REST API, dan Database JSON",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "screenshot": "node take_screenshots.js"
+  },
+  "keywords": [
+    "login",
+    "api",
+    "database-json",
+    "javascript",
+    "pemrograman-web"
+  ],
+  "author": "",
+  "license": "ISC"
+}

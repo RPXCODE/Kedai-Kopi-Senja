@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Kopi Senja - Tempat Bersantai & Menikmati Kopi</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER / BANNER -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Kedai Kopi Senja</h1>
+            <p>Tempat bersantai menikmati secangkir kopi pilihan dengan cita rasa istimewa</p>
+            <div class="header-status-wrapper">
+                <div id="server-status" class="server-status-badge">
+                    <span class="dot"></span> Memeriksa koneksi server...
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR NAVIGATION -->
+    <nav class="navbar" id="main-nav">
+        <div class="navbar-container">
+            <div class="nav-links">
+                <a href="#home" id="nav-home" class="active">Beranda</a>
+                <a href="#menu" id="nav-menu">Daftar Menu</a>
+                <a href="#login" id="nav-login-link">Login / Masuk</a>
+            </div>
+            <div id="navbar-user" class="navbar-user">
+                <!-- User session info & logout button dirender lewat app.js -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER (PAGE VIEWS) -->
+    <main class="main-container">
+        
+        <!-- ============================================== -->
+        <!-- 1. HALAMAN BERANDA (HOME)                      -->
+        <!-- ============================================== -->
+        <section id="home" class="page active">
+            <div class="content">
+                <div class="hero-section">
+                    <h2>Selamat Datang di Kedai Kopi Senja</h2>
+                    <p class="hero-lead">Kami menyajikan berbagai macam kopi pilihan nusantara yang diseduh dengan penuh cinta. Kedai Kopi Senja adalah tempat yang tepat untuk berkumpul bersama teman, keluarga, atau sekadar menghabiskan waktu sendiri sambil membaca buku dan bekerja.</p>
+                </div>
+
+                <div class="promo-box">
+                    <div class="promo-badge">PROMO SPESIAL</div>
+                    <h3>Promo Hari Ini!</h3>
+                    <p>Dapatkan <strong>diskon 20%</strong> untuk setiap pembelian <strong>Kopi Susu Aren</strong> pada hari ini. Berlaku untuk dine-in dan take-away!</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>100% Kopi Asli</h4>
+                        <p>Menggunakan biji kopi Arabika & Robusta pilihan langsung dari petani lokal.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Suasana Nyaman</h4>
+                        <p>Ruangan ber-AC, playlist akustik santai, dan sofa empuk untuk bersantai.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Fasilitas Lengkap</h4>
+                        <p>Akses Wi-Fi super cepat 100 Mbps dan banyak colokan listrik di setiap meja.</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-item">
+                        <div>
+                            <strong>Jam Operasional:</strong>
+                            <p>Setiap Hari, 08:00 - 22:00 WIB</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div>
+                            <strong>Lokasi Kami:</strong>
+                            <p>Jl. Kenangan No. 99, Kota Suka Maju (Dekat Alun-Alun)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-cta">
+                    <a href="#menu" class="btn btn-primary">Lihat Daftar Menu Lengkap</a>
+                    <a href="#login" class="btn btn-outline">Masuk ke Akun Pelanggan</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 2. HALAMAN DAFTAR MENU                         -->
+        <!-- ============================================== -->
+        <section id="menu" class="page">
+            <div class="content">
+                <div class="section-header">
+                    <div>
+                        <h2>Daftar Menu Minuman & Makanan <span id="menu-count" class="menu-count-badge"></span></h2>
+                        <p class="section-subtitle">Data diambil secara dinamis melalui REST API dari file <code>database.json</code></p>
+                    </div>
+                    <button id="btn-refresh-menu" class="btn-sm btn-outline" title="Refresh data dari database JSON">
+                        Refresh Data API
+                    </button>
+                </div>
+
+                <!-- Kontrol Pencarian & Filter -->
+                <div class="menu-filter-bar">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="menu-search" placeholder="Cari nama menu, kategori, atau rasa...">
+                    </div>
+                </div>
+
+                <!-- Tabel Menu -->
+                <div class="table-responsive">
+                    <table class="tabel-menu">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Nama Menu</th>
+                                <th style="width: 18%;">Kategori</th>
+                                <th style="width: 37%;">Deskripsi</th>
+                                <th style="width: 20%;">Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menu-table-body">
+                            <!-- Diisi dinamis oleh app.js via fetch('/api/menu') -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="api-note-box">
+                    <div>
+                        <strong>Integrasi API & Database:</strong> Data menu di atas diakses secara real-time via endpoint <code>GET /api/menu</code> yang membaca file <code>database.json</code> pada backend Node.js.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 3. HALAMAN LOGIN & DAFTAR (AUTHENTICATION)     -->
+        <!-- ============================================== -->
+        <section id="login" class="page">
+            <div class="content auth-container">
+                
+                <div class="auth-header">
+                    <h2>Portal Pelanggan & Barista</h2>
+                    <p>Masuk menggunakan akun terdaftar di <code>database.json</code> melalui REST API</p>
+                </div>
+
+                <!-- Petunjuk Akun Demo Cepat -->
+                <div class="demo-box">
+                    <div class="demo-title">Akun Demo dari database.json (Klik untuk Isi Otomatis):</div>
+                    <div class="demo-buttons">
+                        <button type="button" class="demo-btn demo-btn-admin" onclick="autoFillDemo('admin', 'admin123')">
+                            <strong>Admin / Barista</strong> (admin / admin123)
+                        </button>
+                        <button type="button" class="demo-btn demo-btn-customer" onclick="autoFillDemo('pelanggan', 'kopi123')">
+                            <strong>Pelanggan</strong> (pelanggan / kopi123)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Navigasi Login / Register -->
+                <div class="auth-tabs">
+                    <button type="button" id="tab-btn-login" class="auth-tab active">Masuk (Login)</button>
+                    <button type="button" id="tab-btn-register" class="auth-tab">Daftar Akun Baru (Register)</button>
+                </div>
+
+                <!-- FORM LOGIN -->
+                <div id="form-login-container" class="auth-form-wrapper">
+                    <div id="login-alert" class="alert-box" style="display: none;"></div>
+
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-username">Username</label>
+                            <input type="text" id="login-username" name="username" class="form-input" placeholder="Masukkan username" required autocomplete="username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="login-password" name="password" class="form-input" placeholder="Masukkan password" required autocomplete="current-password">
+                                <button type="button" class="btn-toggle-pw" onclick="togglePasswordVisibility('login-password', this)" title="Lihat password">Lihat</button>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-login-submit" class="btn btn-primary btn-block">
+                            Masuk Sekarang
+                        </button>
+                    </form>
+
+                    <p class="auth-footer-text">
+                        Belum punya akun? <a href="javascript:void(0)" onclick="switchAuthTab('register')">Daftar di sini</a>
+                    </p>
+                </div>
+
+                <!-- FORM REGISTER -->
+                <div id="form-register-container" class="auth-form-wrapper" style="display: none;">
+                    <div id="register-alert" class="alert-box" style="display: none;"></div>
+
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="reg-name">Nama Lengkap</label>
+                            <input type="text" id="reg-name" name="name" class="form-input" placeholder="Contoh: Siti Rahma" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-username">Username Baru</label>
+                            <input type="text" id="reg-username" name="username" class="form-input" placeholder="Contoh: sitirahma" required autocomplete="username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-email">Alamat Email (Opsional)</label>
+                            <input type="email" id="reg-email" name="email" class="form-input" placeholder="Contoh: siti@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-password">Password Baru</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="reg-password" name="password" class="form-input" placeholder="Minimal 6 karakter" required autocomplete="new-password">
+                                <button type="button" class="btn-toggle-pw" onclick="togglePasswordVisibility('reg-password', this)" title="Lihat password">Lihat</button>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btn-register-submit" class="btn btn-primary btn-block">
+                            Daftar Akun
+                        </button>
+                    </form>
+
+                    <p class="auth-footer-text">
+                        Sudah punya akun? <a href="javascript:void(0)" onclick="switchAuthTab('login')">Masuk di sini</a>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================== -->
+        <!-- 4. HALAMAN PROFIL PENGGUNA (SESI AKTIF)        -->
+        <!-- ============================================== -->
+        <section id="profile" class="page">
+            <div class="content">
+                <div class="section-header">
+                    <h2>Profil Pengguna Terautentikasi</h2>
+                    <p class="section-subtitle">Sesi login Anda tersimpan aman dan terverifikasi oleh server API</p>
+                </div>
+                <div id="profile-content">
+                    <!-- Diisi dinamis oleh app.js ketika user login -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2026 <strong>Kedai Kopi Senja</strong>. All rights reserved.</p>
+            <p class="footer-sub">Tugas Pemrograman Web: Autentikasi JavaScript, REST API Node.js & Database JSON</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT APLIKASI -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Temporary Chrome profile & cache
+.temp-chrome-profile/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment & OS
+.DS_Store
+Thumbs.db
